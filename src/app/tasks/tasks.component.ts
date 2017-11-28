@@ -27,7 +27,7 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.svc.mySubject.next(this.taskList);
+    this.svc.emitNewList(this.taskList);
     setTimeout(() => {
       this.addTask('Clean the toilets');
     }, 10000);
@@ -38,6 +38,6 @@ export class TasksComponent implements OnInit {
       description,
       completed: false
     });
-    this.svc.mySubject.next(this.taskList);
+    this.svc.emitNewList(this.taskList);
   }
 }

@@ -4,9 +4,12 @@ export interface Observer {
   next(data: any);
 }
 
-interface Subject {
+interface Observable {
   subscribe(obs: Observer);
   unsubscribe(obs: Observer);
+}
+
+interface Subject extends Observable {
   next(data: any);
 }
 
@@ -45,5 +48,21 @@ class MyBehaviorSubject extends MySubject {
 
 @Injectable()
 export class MyService {
-  mySubject: Subject = new MyBehaviorSubject();
+  private mySubjectInternal: Subject = new MyBehaviorSubject();
+  public mySubject: Observable;
+
+  constructor() {
+    this.mySubject = this.asObservable(this.mySubjectInternal);
+  }
+
+  emitNewList(data: any) {
+    this.mySubjectInternal.next(data);
+  }
+
+  private asObservable(subj: Subject): Observable {
+    return {
+      subscribe: obs => subj.subscribe(obs),
+      unsubscribe: obs => subj.unsubscribe(obs)
+    }
+  }
 }
