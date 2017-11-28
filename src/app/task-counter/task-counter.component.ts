@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer, MyService } from '../my.service';
 import { Task } from '../task';
+import { TasksStoreService } from '../tasks-store.service';
 
 @Component({
   selector: 'app-task-counter',
@@ -10,17 +10,9 @@ import { Task } from '../task';
 export class TaskCounterComponent implements OnInit {
   counter;
 
-  constructor(private svc: MyService) { }
+  constructor(private svc: TasksStoreService) { }
 
   ngOnInit() {
-    this.svc.newList.subscribe({
-      next: data => this.counter = data.length
-    });
-    this.svc.newTask.subscribe({
-      next: data => this.counter++
-    });
-    this.svc.deletedTask.subscribe({
-      next: data => this.counter--
-    });
+    this.svc.taskList$.subscribe(r => this.counter = r.length);
   }
 }

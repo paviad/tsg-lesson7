@@ -1,4 +1,5 @@
 export class Task {
-    description: string;
-    completed: boolean;
+    readonly id: number;
+    readonly description: string;
+    readonly completed: boolean;
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
-import { MyService } from '../my.service';
+import { TasksStoreService } from '../tasks-store.service';
 
 @Component({
   selector: 'app-tasks',
@@ -8,36 +8,24 @@ import { MyService } from '../my.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  taskList: Task[] = [
-    {
-      description: 'Water the plants',
-      completed: false
-    },
-    {
-      description: 'Take out the trash',
-      completed: false
-    },
-    {
-      description: 'Wash the dishes',
-      completed: false
+  taskList: Task[] = [];
+  
+    constructor(private svc: TasksStoreService) {
     }
-  ];
-
-  constructor(private svc: MyService) {
+  
+    ngOnInit(): void {
+      this.svc.taskList$.subscribe(r=>this.taskList=r);
+      setTimeout(() => {
+        this.addTask('Clean the toilets');
+      }, 10000);
+    }
+  
+    addTask(description: string) {
+      const newTask = {
+        id: 0,
+        description,
+        completed: false
+      };
+      this.svc.addTask(newTask);
+    }
   }
-
-  ngOnInit(): void {
-    this.svc.emitNewList(this.taskList);
-    setTimeout(() => {
-      this.addTask('Clean the toilets');
-    }, 10000);
-  }
-
-  addTask(description: string) {
-    this.taskList.push({
-      description,
-      completed: false
-    });
-    this.svc.emitNewList(this.taskList);
-  }
-}

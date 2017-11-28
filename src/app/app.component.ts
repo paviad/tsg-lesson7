@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observer, MyService } from './my.service';
-import { Task } from './task';
 
 @Component({
   selector: 'app-root',

@@ -8,6 +8,7 @@ import { MyService } from './my.service';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskCounterComponent } from './task-counter/task-counter.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TasksStoreService } from './tasks-store.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,10 @@ import { TasksComponent } from './tasks/tasks.component';
     MaterialModule,
     RoutingModule,
   ],
-  providers: [MyService],
+  providers: [
+    MyService,
+    TasksStoreService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
