@@ -25,7 +25,25 @@ class MySubject implements Subject {
   }
 }
 
+class MyBehaviorSubject extends MySubject {
+  constructor(private lastValue?: any) {
+    super();
+  }
+
+  subscribe(obs: Observer) {
+    if (this.lastValue) {
+      obs.next(this.lastValue);
+    }
+    super.subscribe(obs);
+  }
+
+  next(data: any) {
+    this.lastValue = data;
+    super.next(data);
+  }
+}
+
 @Injectable()
 export class MyService {
-  mySubject: Subject = new MySubject();
+  mySubject: Subject = new MyBehaviorSubject();
 }
