@@ -7,16 +7,20 @@ import { Task } from '../task';
   templateUrl: 'task-counter.component.html',
   styles: []
 })
-export class TaskCounterComponent implements OnInit, Observer {
+export class TaskCounterComponent implements OnInit {
   counter;
 
   constructor(private svc: MyService) { }
 
   ngOnInit() {
-    this.svc.mySubject.subscribe(this);
-  }
-
-  next(data: Task[]) {
-    this.counter = data.length;
+    this.svc.newList.subscribe({
+      next: data => this.counter = data.length
+    });
+    this.svc.newTask.subscribe({
+      next: data => this.counter++
+    });
+    this.svc.deletedTask.subscribe({
+      next: data => this.counter--
+    });
   }
 }

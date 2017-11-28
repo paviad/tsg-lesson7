@@ -48,15 +48,29 @@ class MyBehaviorSubject extends MySubject {
 
 @Injectable()
 export class MyService {
-  private mySubjectInternal: Subject = new MyBehaviorSubject();
-  public mySubject: Observable;
+  private newListInternal: Subject = new MyBehaviorSubject();
+  private newTaskInternal: Subject = new MySubject();
+  private deletedTaskInternal: Subject = new MySubject();
+  public newList: Observable;
+  public newTask: Observable;
+  public deletedTask: Observable;
 
   constructor() {
-    this.mySubject = this.asObservable(this.mySubjectInternal);
+    this.newList = this.asObservable(this.newListInternal);
+    this.newTask = this.asObservable(this.newTaskInternal);
+    this.deletedTask = this.asObservable(this.deletedTaskInternal);
   }
 
   emitNewList(data: any) {
-    this.mySubjectInternal.next(data);
+    this.newListInternal.next(data);
+  }
+
+  emitNewTask(data: any) {
+    this.newTaskInternal.next(data);
+  }
+
+  emitDeletedTask(data: any) {
+    this.deletedTaskInternal.next(data);
   }
 
   private asObservable(subj: Subject): Observable {

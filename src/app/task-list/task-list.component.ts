@@ -7,21 +7,24 @@ import { Task } from '../task';
   templateUrl: 'task-list.component.html',
   styles: []
 })
-export class TaskListComponent implements OnInit, Observer {
+export class TaskListComponent implements OnInit {
   taskList: Task[];
 
   constructor(private svc: MyService) { }
 
   ngOnInit() {
-    this.svc.mySubject.subscribe(this)
+    this.svc.newList.subscribe({
+      next: data => this.nextList(data)
+    });
   }
 
-  next(data: Task[]) {
+  nextList(data: Task[]) {
     this.taskList = data;
   }
 
   deleteTask(t: Task) {
     const idx = this.taskList.findIndex(x => x === t);
     if (idx != -1) this.taskList.splice(idx, 1);
+    this.svc.emitDeletedTask(t);
   }
 }
