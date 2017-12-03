@@ -9,6 +9,10 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskCounterComponent } from './task-counter/task-counter.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksStoreService } from './tasks-store.service';
+import { MultiClickerComponent } from './multi-clicker/multi-clicker.component';
+import { MessageService } from './message.service';
+import { ClickersComponent } from './clickers/clickers.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,9 @@ import { TasksStoreService } from './tasks-store.service';
     TaskListComponent,
     TaskCounterComponent,
     TasksComponent,
+    MultiClickerComponent,
+    ClickersComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +32,7 @@ import { TasksStoreService } from './tasks-store.service';
   providers: [
     MyService,
     TasksStoreService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

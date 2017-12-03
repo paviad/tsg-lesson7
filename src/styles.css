@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootswatch/dist/lumen/bootstrap.min.css';
+
+div.clicker {
+    border: 1px solid black;
+    padding: 50px;
+    background-color: wheat;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    user-select: none;
+}

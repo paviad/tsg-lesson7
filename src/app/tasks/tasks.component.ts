@@ -9,23 +9,23 @@ import { TasksStoreService } from '../tasks-store.service';
 })
 export class TasksComponent implements OnInit {
   taskList: Task[] = [];
-  
-    constructor(private svc: TasksStoreService) {
-    }
-  
-    ngOnInit(): void {
-      this.svc.taskList$.subscribe(r=>this.taskList=r);
-      setTimeout(() => {
-        this.addTask('Clean the toilets');
-      }, 10000);
-    }
-  
-    addTask(description: string) {
-      const newTask = {
-        id: 0,
-        description,
-        completed: false
-      };
-      this.svc.addTask(newTask);
-    }
+
+  constructor(private svc: TasksStoreService) {
   }
+
+  ngOnInit(): void {
+    this.svc.taskList$.subscribe(r => this.taskList = r);
+    setTimeout(() => {
+      this.addTask('Clean the toilets');
+    }, 10000);
+  }
+
+  addTask(description: string) {
+    const newTask = {
+      id: 0,
+      description,
+      completed: false
+    };
+    this.svc.addTask(newTask);
+  }
+}
