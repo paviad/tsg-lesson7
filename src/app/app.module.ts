@@ -13,6 +13,7 @@ import { MultiClickerComponent } from './multi-clicker/multi-clicker.component';
 import { MessageService } from './message.service';
 import { ClickersComponent } from './clickers/clickers.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SingleDoubleClickerComponent } from './single-double-clicker/single-double-clicker.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MessagesComponent } from './messages/messages.component';
     MultiClickerComponent,
     ClickersComponent,
     MessagesComponent,
+    SingleDoubleClickerComponent,
   ],
   imports: [
     BrowserModule,
