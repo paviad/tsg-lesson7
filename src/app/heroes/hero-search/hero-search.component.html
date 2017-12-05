@@ -1,4 +1,7 @@
 <form [formGroup]="form" (submit)="doSearch(form.value.q)" novalidate>
-  <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="q">
+  <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="q" list="options">
+  <datalist id="options">
+    <option *ngFor="let opt of (options$ | async)">{{opt}}</option>
+  </datalist>
   <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 </form>
