@@ -1,0 +1,9 @@
+<h4>Heroes List</h4>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let hero of (heroes$ | async)" (click)="goToHero(hero)">
+    <app-hero-summary [hero]="hero"></app-hero-summary>
+  </li>
+</ul>
+<div *ngIf="noResults$ | async">
+  No Results
+</div>

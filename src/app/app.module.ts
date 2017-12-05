@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import { MaterialModule } from './material/material.module';
 import { RoutingModule } from './routing/routing.module';
+import { HeroesModule } from './heroes/heroes.module';
 
 import { AppComponent } from './app.component';
 import { MyService } from './my.service';
@@ -30,6 +33,8 @@ import { SingleDoubleClickerComponent } from './single-double-clicker/single-dou
     BrowserModule,
     MaterialModule,
     RoutingModule,
+    HttpClientModule,
+    HeroesModule,
   ],
   providers: [
     MyService,

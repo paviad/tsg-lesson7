@@ -12,15 +12,17 @@
                     <a class="nav-link" routerLink="/tasks">Tasks</a>
                 </li>
             </ul>
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" routerLink="/clickers">Clickers</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/heroes">Heroes</a>
+                </li>
+            </ul>
+            <app-hero-search class="form-inline my-2 my-lg-0"></app-hero-search>
         </div>
     </nav>
     <div class="row">

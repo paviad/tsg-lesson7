@@ -1,0 +1,17 @@
+<div class="card border-primary mb-3">
+  <div class="card-header">Superhero</div>
+  <div *ngIf="(hero$ | async) as hero else loading">
+    <div class="card-body text-primary">
+      <h4 class="card-title">{{hero.superhero}}</h4>
+      <p class="card-text">Publisher: {{hero.publisher}}</p>
+      <p class="card-text">Alter Ego: {{hero.alter_ego}}</p>
+      <p class="card-text">First Appearance: {{hero.first_appearance}}</p>
+      <p class="card-text">Characters: {{hero.characters}}</p>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div>
+      Loading...
+    </div>
+  </ng-template>
+</div>
